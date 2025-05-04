@@ -23,6 +23,7 @@ html {
 
 body {
     margin-bottom: 60px;
+    font-family: "Red Hat Display";
 }
 
 header {
@@ -32,7 +33,7 @@ header {
 }
 
 .slider {
-    background-image: url('/images/slider1.jpg');
+    background-image: url('/images/image4.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -59,6 +60,40 @@ header {
 .content {
     padding: 20px;
 }
+
+.explore-images {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feature-images {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Container for the section */
+.side-by-side {
+    display: flex; /* Makes the child elements appear side by side */
+    justify-content: space-between; /* Space between the text and the image */
+    align-items: center; /* Vertically center the content */
+    margin: 40px 0; /* Add margin for spacing */
+}
+
+/* Styling for the text container */
+.text-container {
+    flex: 1; /* Take up available space */
+    padding-right: 20px; /* Space between text and image */
+}
+
+/* Styling for the image container */
+.image-container img {
+    max-width: 100%; /* Make sure the image is responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: rounded corners */
+}
+
 
 .admin {
     padding: 20px;

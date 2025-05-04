@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -7,8 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\" />
     <Folder Include="Views\Home\NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\circle-icons.png" />
+    <None Include="wwwroot\images\discover.png" />
+    <None Include="wwwroot\images\education.png" />
+    <None Include="wwwroot\images\explore-image1.png" />
+    <None Include="wwwroot\images\explore-image2.png" />
+    <None Include="wwwroot\images\explore-image3.png" />
+    <None Include="wwwroot\images\healthcare.png" />
+    <None Include="wwwroot\images\hospitality.png" />
+    <None Include="wwwroot\images\image4.png" />
+    <None Include="wwwroot\images\office.png" />
   </ItemGroup>
 
   <ItemGroup>

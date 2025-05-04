@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="~/css/site.css">
@@ -13,27 +14,55 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 </head>
 <body>
-        <main>
-        <section class="content">
-            <h1>@Model.Title</h1>
-            <p>@Model.Description</p>
-        </section>
-    </main>
     <header>
-        <div class="slider">
-            <div>
-                <h2>Welcome to Verto</h2>
-                <p>Custom built design and development for your business.</p>
+        <section>
+            <div class="slider">
+                <div>
+                    <h2>Welcome to Verto</h2>
+                    <p>Custom built design and development for your business.</p>
+                </div>
+                <div>
+                    <h2>Innovative Solutions</h2>
+                    <p>We create custom solutions that fit your unique needs.</p>
+                </div>
+                <div>
+                    <h2>Get Started Today</h2>
+                    <p>Contact us to take the first step towards a better digital experience.</p>
+                </div>
             </div>
-            <div>
-                <h2>Innovative Solutions</h2>
-                <p>We create custom solutions that fit your unique needs.</p>
-            </div>
-            <div>
-                <h2>Get Started Today</h2>
-                <p>Contact us to take the first step towards a better digital experience.</p>
-            </div>
-        </div>
+
+        </section>
+
+<section class="side-by-side">
+    <div class="image-container">
+        <img src="@Model.ImagePath" alt="Side-by-side Image">
+    </div>
+    <div class="text-content">
+        <h2>@Model.Title</h2>
+        <p>@Model.Description</p>
+    </div>
+</section>
+
+<section>
+    <div>
+        <h1>hi</h1>
+    </div>
+    <div class="explore-images">
+        <div><img src="@Model.ExploreImage1" alt="Explore Image 1"></div>
+        <div><img src="@Model.ExploreImage2" alt="Explore Image 2"></div>
+        <div><img src="@Model.ExploreImage3" alt="Explore Image 3"></div>
+    </div>
+</section>
+
+<section>
+    <div class="feature-images">
+        <div><img src="@Model.FeatureImage1" alt="Feature Image 1"></div>
+        <div><img src="@Model.FeatureImage2" alt="Feature Image 2"></div>
+        <div><img src="@Model.FeatureImage3" alt="Feature Image 3"></div>
+        <div><img src="@Model.FeatureImage4" alt="Feature Image 2"></div>
+    </div>
+            <div><img src="@Model.DiscoverImage" alt="Discover Image"></div>
+</section>
 
     </header>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
