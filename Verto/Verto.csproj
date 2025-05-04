@@ -21,6 +21,7 @@
     <None Include="wwwroot\images\hospitality.png" />
     <None Include="wwwroot\images\image4.png" />
     <None Include="wwwroot\images\office.png" />
+    <None Include="wwwroot\images\search.png" />
   </ItemGroup>
 
   <ItemGroup>

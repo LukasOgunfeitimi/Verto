@@ -2,6 +2,7 @@ html {
     font-size: 14px;
 }
 
+
 @media (min-width: 768px) {
     html {
         font-size: 16px;
@@ -30,6 +31,18 @@ header {
     position: relative;
     width: 100%;
     overflow: hidden;
+}
+
+/*custom colours to match the page*/
+.bg-light-grey {
+    background-color: #F4F4F4;
+}
+.bg-dark-blue {
+    background-color: #2A4351;
+}
+
+.dark-blue {
+  color: #2A4351;
 }
 
 .slider {
@@ -72,6 +85,8 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+
+
 
 /* Container for the section */
 .side-by-side {
