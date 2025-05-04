@@ -1,71 +1,95 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 header {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
-.slider img {
-  width: 100%;
-  height: auto;
+.slider {
+    background-image: url('/images/slider1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 400px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider div {
+    text-align: center;
+    padding: 50px;
+}
+
+.slider h2 {
+    font-size: 2rem;
+}
+
+.slider p {
+    font-size: 1.2rem;
 }
 
 .content {
-  padding: 20px;
+    padding: 20px;
 }
 
 .admin {
-  padding: 20px;
+    padding: 20px;
 }
 
 .admin form div {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .admin form label {
-  display: block;
-  margin-bottom: 5px;
+    display: block;
+    margin-bottom: 5px;
 }
 
-.admin form input, .admin form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.admin form input,
+.admin form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .admin form button {
-  padding: 10px 20px;
-  background-color: #258cfb;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+    padding: 10px 20px;
+    background-color: #258cfb;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .admin form button:hover {
-  background-color: #1e73be;
+    background-color: #1e73be;
 }
