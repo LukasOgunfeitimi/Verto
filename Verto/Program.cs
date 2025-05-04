@@ -27,33 +27,23 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 using (var scope = app.Services.CreateScope()) {
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<ApplicationDbContext>();
     context.Database.Migrate();
 
-    // Check if the record exists
-    var homePageContent = context.HomePageContents.FirstOrDefault();
-    if (homePageContent == null) {
-        // Add new record if none exists
+    if (!context.HomePageContents.Any()) {
         context.HomePageContents.Add(new HomePageContent {
-            Title = "Welcome to Verto hi",
+            Title = "Welcome to Verto",
             Description = "Custom built design and development for your business.",
             SliderImage1 = "/images/slider1.jpg",
             SliderImage2 = "/images/slider2.jpg",
             SliderImage3 = "/images/slider3.jpg",
             ImagePath = "/images/content.jpg"
         });
-    } else {
-        // Update the existing record
-        homePageContent.Title = "Welcome to Verto hi";
-        homePageContent.Description = "Custom built design and development for your business.";
-        homePageContent.SliderImage1 = "/images/slider1.jpg";
-        homePageContent.SliderImage2 = "/images/slider2.jpg";
-        homePageContent.SliderImage3 = "/images/slider3.jpg";
-        homePageContent.ImagePath = "/images/content.jpg";
+        context.SaveChanges();
     }
-
-    context.SaveChanges();
 }
+
 app.Run();

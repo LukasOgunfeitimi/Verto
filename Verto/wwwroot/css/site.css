@@ -24,32 +24,13 @@ body {
 header {
   position: relative;
   width: 100%;
+  height: 400px;
   overflow: hidden;
 }
 
-.slider {
-    background-image: url('/images/slider1.jpg');
-    background-size: cover; /* Ensures the image covers the entire slider */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat;
-    height: 400px; /* Adjust this value to fit your design */
-    filter: brightness(80%);
-}
-
-
-.slider div {
-    text-align: center; /* Centers the text */
-    padding: 50px;
-}
-
-.slider h2 {
-    font-size: 2rem;
-    color: #FFF;
-}
-
-.slider p {
-    font-size: 1.2rem;
-    color: #FFF;
+.slider img {
+  width: 100%;
+  height: auto;
 }
 
 .content {
