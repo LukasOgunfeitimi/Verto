@@ -1,32 +1,29 @@
-﻿
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.FileProviders;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.IO;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using System.Threading.Tasks;
+using Verto.Models;
+using Verto.Services;
 namespace Verto.Controllers {
     public class AdminController : Controller {
         private readonly ApplicationDbContext _context;
+        private readonly HomePageContentService _homePageContentService;
 
-        public AdminController(ApplicationDbContext context) {
+        public AdminController(ApplicationDbContext context, HomePageContentService homePageContentService) {
             _context = context;
+            _homePageContentService = homePageContentService;
+        }
+        
+        public async Task<IActionResult> ResetHomePage() {
+            await _homePageContentService.ResetHomePage();
+            return Redirect("/");
         }
 
         // GET: Admin/EditHomepage
         public async Task<IActionResult> EditHomepage() {
-            // Retrieve the homepage content from the database
             var homepageContent = await _context.HomePageContents.FirstOrDefaultAsync();
-            if (homepageContent == null) {
-                return NotFound(); // If no content is found, return 404
-            }
-
+            if (homepageContent == null) return NotFound();
             return View(homepageContent);
         }
 
@@ -35,7 +32,7 @@ namespace Verto.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditHomepage(
             HomePageContent model,
-            IFormFile ImagePath,
+            IFormFile MainImage,
             IFormFile ExploreImage1,
             IFormFile ExploreImage2,
             IFormFile ExploreImage3,
@@ -43,42 +40,35 @@ namespace Verto.Controllers {
             IFormFile FeatureImage2,
             IFormFile FeatureImage3,
             IFormFile FeatureImage4,
-            IFormFile DiscoverImage) {
-        var existing = await _context.HomePageContents.FirstOrDefaultAsync();
+            IFormFile DiscoverImage
+        ) {
+            var existing = await _context.HomePageContents.FirstOrDefaultAsync();
+            if (existing == null) return NotFound();
 
-        if (existing == null)
-            return NotFound();
+            // Text fields
+            if (!string.IsNullOrWhiteSpace(model.Title)) existing.Title = model.Title;
+            if (!string.IsNullOrWhiteSpace(model.Description)) existing.Description = model.Description;
 
-        if (isNull(model.Title)) existing.Title = model.Title;
-        if (isNull(model.Description)) existing.Description = model.Description;
+            // Uploads
+            if (MainImage != null) existing.MainImage = await SaveImageAsync(MainImage);
+            if (ExploreImage1 != null) existing.ExploreImage1 = await SaveImageAsync(ExploreImage1);
+            if (ExploreImage2 != null) existing.ExploreImage2 = await SaveImageAsync(ExploreImage2);
+            if (ExploreImage3 != null) existing.ExploreImage3 = await SaveImageAsync(ExploreImage3);
+            if (FeatureImage1 != null) existing.FeatureImage1 = await SaveImageAsync(FeatureImage1);
+            if (FeatureImage2 != null) existing.FeatureImage2 = await SaveImageAsync(FeatureImage2);
+            if (FeatureImage3 != null) existing.FeatureImage3 = await SaveImageAsync(FeatureImage3);
+            if (FeatureImage4 != null) existing.FeatureImage4 = await SaveImageAsync(FeatureImage4);
+            if (DiscoverImage != null) existing.DiscoverImage = await SaveImageAsync(DiscoverImage);
 
-        if (isNull(model.ImagePath)) existing.ImagePath = model.ImagePath;
-        if (isNull(model.SliderImage1)) existing.SliderImage1 = model.SliderImage1;
-        if (isNull(model.SliderImage2)) existing.SliderImage2 = model.SliderImage2;
-        if (isNull(model.SliderImage3)) existing.SliderImage3 = model.SliderImage3;
-
-        if (isNull(model.DiscoverImage)) existing.DiscoverImage = model.DiscoverImage;
-
-        if (isNull(model.ExploreImage1)) existing.ExploreImage1 = model.ExploreImage1;
-        if (isNull(model.ExploreImage2)) existing.ExploreImage2 = model.ExploreImage2;
-        if (isNull(model.ExploreImage3)) existing.ExploreImage3 = model.ExploreImage3;
-
-        if (isNull(model.FeatureImage1)) existing.FeatureImage1 = model.FeatureImage1;
-        if (isNull(model.FeatureImage2)) existing.FeatureImage2 = model.FeatureImage2;
-        if (isNull(model.FeatureImage3)) existing.FeatureImage3 = model.FeatureImage3;
-        if (isNull(model.FeatureImage4)) existing.FeatureImage4 = model.FeatureImage4;
-
-        await _context.SaveChangesAsync();
-        return Redirect("/");
+            await _context.SaveChangesAsync();
+            return Redirect("/");
         }
 
-        private bool isNull(string? str) {
-            return !string.IsNullOrWhiteSpace(str);
-        }
-
-
+        /*
+        Create a random id for the file, save it and return the path
+        */
         private async Task<string> SaveImageAsync(IFormFile file) {
-            var fileName = Path.GetFileNameWithoutExtension(file.FileName) + "_" + System.Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+            var fileName = Path.GetFileNameWithoutExtension(file.FileName) + "_" + System.Guid.NewGuid() + Path.GetExtension(file.FileName);
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", fileName);
 
             Directory.CreateDirectory(Path.GetDirectoryName(filePath));
@@ -87,8 +77,7 @@ namespace Verto.Controllers {
                 await file.CopyToAsync(stream);
             }
 
-            return "/images/" + fileName; 
+            return "/images/" + fileName;
         }
     }
 }
-

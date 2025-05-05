@@ -7,6 +7,5 @@ public class ApplicationDbContext : DbContext {
         : base(options) {
     }
 
-    // DbSet property for the HomePageContent entity
     public DbSet<HomePageContent> HomePageContents { get; set; }
 }

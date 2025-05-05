@@ -11,6 +11,9 @@
 <body>
     <div class="container">
         <h1>Edit Homepage Content</h1>
+        <form method="post" asp-action="ResetHomePage">
+            <button type="submit" class="btn btn-danger">Reset Homepage</button>
+        </form>
 
         <form method="post" enctype="multipart/form-data">
             <div class="grid-x grid-padding-x">
@@ -26,8 +29,8 @@
 
             <div class="grid-x grid-padding-x">
                 <div class="cell small-12 medium-6">
-                    <label for="ImagePath">Main Image</label>
-                    <input type="file" id="ImagePath" name="ImagePath">
+                    <label for="MainImage">Main Image</label>
+                    <input type="file" id="MainImage" name="MainImage">
                 </div>
             </div>
 

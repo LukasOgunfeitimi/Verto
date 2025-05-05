@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Verto.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250505144644_CircleImage")]
+    partial class CircleImage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,24 +62,6 @@ namespace Verto.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MainImage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SliderDesc1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SliderDesc2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SliderDesc3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SliderTitle1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SliderTitle2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SliderTitle3")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")

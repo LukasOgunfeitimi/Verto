@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Verto.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250505150107_AddNewSliderTexts")]
+    partial class AddNewSliderTexts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,30 +64,44 @@ namespace Verto.Migrations
                     b.Property<string>("MainImage")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SliderDesc1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SliderDesc2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SliderDesc3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SliderTitle1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SliderTitle2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SliderTitle3")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("HomePageContents");
+                });
+
+            modelBuilder.Entity("HomePageContent", b =>
+                {
+                    b.OwnsMany("Text", "SliderTexts", b1 =>
+                        {
+                            b1.Property<int>("HomePageContentId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
+
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("Id"));
+
+                            b1.Property<string>("Description")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("Title")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("HomePageContentId", "Id");
+
+                            b1.ToTable("SliderTexts");
+
+                            b1.WithOwner("HomePageContent")
+                                .HasForeignKey("HomePageContentId");
+
+                            b1.Navigation("HomePageContent");
+                        });
+
+                    b.Navigation("SliderTexts");
                 });
 #pragma warning restore 612, 618
         }
