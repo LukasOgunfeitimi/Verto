@@ -46,7 +46,6 @@ header {
 }
 
 .slider {
-    background-image: url('/images/main.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -55,11 +54,13 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .slider div {
     text-align: center;
     padding: 50px;
+    position: relative; /* Make sure content stays above the darkened image */
 }
 
 .slider h2 {
@@ -69,6 +70,7 @@ header {
 .slider p {
     font-size: 1.2rem;
 }
+
 
 .content {
     padding: 20px;
