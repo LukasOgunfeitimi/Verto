@@ -1,29 +1,49 @@
 ﻿@model HomePageContent
-
+@{
+    Layout = null;
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Homepage</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites/dist/css/foundation.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites/dist/css/foundation.min.css" />
 </head>
 <body>
-    <div class="container">
+    <div class="grid-container">
         <h1>Edit Homepage Content</h1>
 
-        <!-- Reset Homepage Form -->
-        <form method="post" asp-action="ResetHomePage">
-            <button type="submit" class="btn btn-danger">Reset Homepage</button>
-        </form>
-
-        <!-- Edit Homepage Content Form -->
         <form method="post" enctype="multipart/form-data">
-            <!-- Basic Content Section -->
+            <!-- Reset Button -->
+            <button type="submit" formaction="/Admin/ResetHomePage" class="button alert">Reset Homepage</button>
+
+            <h3>Slider Text</h3>
+            <div class="grid-x grid-padding-x">
+                <div class="cell small-12 medium-4">
+                    <label for="SliderTitle1">Slider Title 1</label>
+                    <input type="text" id="SliderTitle1" name="SliderTitle1" value="@Model.SliderTitle1" />
+                    <label for="SliderDesc1">Slider Description 1</label>
+                    <textarea id="SliderDesc1" name="SliderDesc1">@Model.SliderDesc1</textarea>
+                </div>
+                <div class="cell small-12 medium-4">
+                    <label for="SliderTitle2">Slider Title 2</label>
+                    <input type="text" id="SliderTitle2" name="SliderTitle2" value="@Model.SliderTitle2" />
+                    <label for="SliderDesc2">Slider Description 2</label>
+                    <textarea id="SliderDesc2" name="SliderDesc2">@Model.SliderDesc2</textarea>
+                </div>
+                <div class="cell small-12 medium-4">
+                    <label for="SliderTitle3">Slider Title 3</label>
+                    <input type="text" id="SliderTitle3" name="SliderTitle3" value="@Model.SliderTitle3" />
+                    <label for="SliderDesc3">Slider Description 3</label>
+                    <textarea id="SliderDesc3" name="SliderDesc3">@Model.SliderDesc3</textarea>
+                </div>
+            </div>
+
             <div class="grid-x grid-padding-x">
                 <div class="cell small-12 medium-6">
                     <label for="Title">Title</label>
-                    <input type="text" id="Title" name="Title" value="@Model.Title" required>
+                    <input type="text" id="Title" name="Title" value="@Model.Title" required />
                 </div>
                 <div class="cell small-12 medium-6">
                     <label for="Description">Description</label>
@@ -31,81 +51,55 @@
                 </div>
             </div>
 
-            <!-- Images Section -->
             <div class="grid-x grid-padding-x">
                 <div class="cell small-12 medium-6">
                     <label for="MainImage">Main Image</label>
-                    <input type="file" id="MainImage" name="MainImage">
+                    <input type="file" id="MainImage" name="MainImage" />
                 </div>
             </div>
 
-            <!-- Explore Section: Aligned properly -->
             <div class="grid-x grid-padding-x">
                 <div class="cell small-12 medium-4">
                     <label for="ExploreImage1">Explore Image 1</label>
-                    <input type="file" id="ExploreImage1" name="ExploreImage1">
+                    <input type="file" id="ExploreImage1" name="ExploreImage1" />
                 </div>
                 <div class="cell small-12 medium-4">
                     <label for="ExploreImage2">Explore Image 2</label>
-                    <input type="file" id="ExploreImage2" name="ExploreImage2">
+                    <input type="file" id="ExploreImage2" name="ExploreImage2" />
                 </div>
                 <div class="cell small-12 medium-4">
                     <label for="ExploreImage3">Explore Image 3</label>
-                    <input type="file" id="ExploreImage3" name="ExploreImage3">
+                    <input type="file" id="ExploreImage3" name="ExploreImage3" />
                 </div>
             </div>
 
-            <!-- Feature Section: Aligned properly -->
             <div class="grid-x grid-padding-x">
                 <div class="cell small-12 medium-3">
                     <label for="FeatureImage1">Feature Image 1</label>
-                    <input type="file" id="FeatureImage1" name="FeatureImage1">
+                    <input type="file" id="FeatureImage1" name="FeatureImage1" />
                 </div>
                 <div class="cell small-12 medium-3">
                     <label for="FeatureImage2">Feature Image 2</label>
-                    <input type="file" id="FeatureImage2" name="FeatureImage2">
+                    <input type="file" id="FeatureImage2" name="FeatureImage2" />
                 </div>
                 <div class="cell small-12 medium-3">
                     <label for="FeatureImage3">Feature Image 3</label>
-                    <input type="file" id="FeatureImage3" name="FeatureImage3">
+                    <input type="file" id="FeatureImage3" name="FeatureImage3" />
                 </div>
                 <div class="cell small-12 medium-3">
                     <label for="FeatureImage4">Feature Image 4</label>
-                    <input type="file" id="FeatureImage4" name="FeatureImage4">
+                    <input type="file" id="FeatureImage4" name="FeatureImage4" />
                 </div>
             </div>
 
-            <!-- Discover Image -->
             <div class="grid-x grid-padding-x">
                 <div class="cell small-12">
                     <label for="DiscoverImage">Discover Image</label>
-                    <input type="file" id="DiscoverImage" name="DiscoverImage">
+                    <input type="file" id="DiscoverImage" name="DiscoverImage" />
                 </div>
             </div>
 
-            <h3>Slider Text</h3>
-            <div class="grid-x grid-padding-x">
-                <div class="cell small-12 medium-4">
-                    <label for="SliderTitle1">Slider Title 1</label>
-                    <input type="text" id="SliderTitle1" name="SliderTitle1" value="@Model.SliderTitle1">
-                    <label for="SliderDesc1">Slider Description 1</label>
-                    <textarea id="SliderDesc1" name="SliderDesc1">@Model.SliderDesc1</textarea>
-                </div>
-                <div class="cell small-12 medium-4">
-                    <label for="SliderTitle2">Slider Title 2</label>
-                    <input type="text" id="SliderTitle2" name="SliderTitle2" value="@Model.SliderTitle2">
-                    <label for="SliderDesc2">Slider Description 2</label>
-                    <textarea id="SliderDesc2" name="SliderDesc2">@Model.SliderDesc2</textarea>
-                </div>
-                <div class="cell small-12 medium-4">
-                    <label for="SliderTitle3">Slider Title 3</label>
-                    <input type="text" id="SliderTitle3" name="SliderTitle3" value="@Model.SliderTitle3">
-                    <label for="SliderDesc3">Slider Description 3</label>
-                    <textarea id="SliderDesc3" name="SliderDesc3">@Model.SliderDesc3</textarea>
-                </div>
-            </div>
-
-            <button type="submit" class="button" style="background-color: #DDB62E; border-radius: 5px;">Save Changes</button>
+            <button type="submit" class="button success" style="background-color: #DDB62E; border-radius: 5px;">Save Changes</button>
         </form>
     </div>
 </body>

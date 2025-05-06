@@ -22,9 +22,18 @@ html {
     min-height: 100%;
 }
 
+.slick-dots li button:before {
+    color: white !important;
+    opacity: 1;
+}
+
+.slick-dots li.slick-active button:before {
+    color: white !important;
+}
+
 body {
-    margin-bottom: 60px;
     font-family: "Red Hat Display";
+    font-weight: bold;
 }
 
 header {
@@ -44,22 +53,56 @@ header {
 .dark-blue {
   color: #2A4351;
 }
-
-.slider {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 400px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.side-padding {
+    padding-left: 15rem;
+    padding-right: 15rem;
+}
+.top-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+.position-relative {
     position: relative;
 }
 
+.explore-image {
+    width: 100%;
+    display: block;
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.image-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.no-background {
+    background: none;
+    color: white;
+    border: none;
+    text-decoration: underline;
+    padding: 5px 10px;
+}
+
+    .no-background:hover {
+        cursor: pointer;
+        text-decoration: none;
+        color: #DDB62E; /* or any other hover color */
+    }
+
+
+
 .slider div {
     text-align: center;
-    padding: 50px;
     position: relative; /* Make sure content stays above the darkened image */
 }
 

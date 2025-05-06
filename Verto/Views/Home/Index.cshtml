@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites/dist/css/foundation.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="~/css/site.css">
@@ -16,85 +16,120 @@
 <body>
     <header>
         <section>
-            <div class="slider" style="background-image: url('@Model.MainImage');">
-                <div>
-                    <h2>@Model.SliderTitle1</h2>
-                    <p>@Model.SliderDesc1</p>
+            <div class="relative h-[400px] text-white text-center">
+                <img src="@Model.MainImage" style="filter:brightness(0.5)"/>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="slider w-full">
+                        <div>
+                            <div class="text-2xl md:text-4xl font-bold">
+                                <h2>@Model.SliderTitle1</h2>
+                                <p>@Model.SliderDesc1</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-2xl md:text-4xl font-bold">
+                                <h2>@Model.SliderTitle2</h2>
+                                <p>@Model.SliderDesc2</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-2xl md:text-4xl font-bold">
+                                <h2>@Model.SliderTitle3</h2>
+                                <p>@Model.SliderDesc3</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h2>@Model.SliderTitle2</h2>
-                    <p>@Model.SliderDesc2</p>
+            </div>
+        </section>
+
+
+
+        <section class="bg-light-grey py-12">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="flex justify-center">
+                    <img src="@Model.CircleIconsImage" alt="Side-by-side Image" class="w-full h-auto">
                 </div>
-                <div>
-                    <h2>@Model.SliderTitle3</h2>
-                    <p>@Model.SliderDesc3</p>
+                <div class="flex flex-col justify-center">
+                    <h2 class="text-dark-blue text-3xl font-bold">@Model.Title</h2>
+                    <p class="text-lg mb-6">@Model.Description</p>
+                    <div class="flex sm:justify-start justify-center ">
+                        <button class="bg-yellow-500 text-white py-2 px-4 rounded-md">WHAT WE DO</button>
+                    </div>
                 </div>
             </div>
         </section>
 
 
-        <section class="bg-light-grey side-by-side grid-container">
-            <div class="grid-x grid-padding-x align-middle">
-                <div class="cell medium-6">
-                    <img src="@Model.CircleIconsImage" alt="Side-by-side Image">
-                </div>
-                <div class="cell medium-6">
-                    <h2 class="dark-blue">@Model.Title</h2>
-                    <p>@Model.Description</p>
-                    <button class="button" style="background-color: #DDB62E; border-radius: 5px;">WHAT WE DO</button>
-
-                </div>
-            </div>
-        </section>
-
+        <!-- Explore Section -->
         <section>
-            <div class="dark-blue mt-7 mb-4" style="display: flex; justify-content: center;">Explore our latest work...</div>
-            <div class="explore-images grid-x grid-padding-x">
-                <div class="cell small-12 medium-4">
-                    <img src="@Model.ExploreImage1" alt="Explore Image 1">
+            <div class="text-center text-4xl text-dark-blue mt-14 mb-7">
+                <h1>Explore our latest work...</h1>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-12">
+                <div class="relative">
+                    <img src="@Model.ExploreImage1" style="filter:brightness(0.75);" alt="Explore Image 1" class="w-full h-auto">
+                    <div class="absolute bottom-0 left-0 p-4 w-full">
+                        <div class="text-white">Your Text Here</div>
+                        <button class="bg-transparent text-white border-none hover:underline mt-2">VIEW MORE →</button>
+                    </div>
                 </div>
-                <div class="cell small-12 medium-4">
-                    <img src="@Model.ExploreImage2" alt="Explore Image 2">
+                <div class="relative">
+                    <img src="@Model.ExploreImage2" style="filter:brightness(0.75);" alt="Explore Image 2" class="w-full h-auto">
+                    <div class="absolute bottom-0 left-0 p-4 w-full">
+                        <div class="text-white">Your Text Here</div>
+                        <button class="bg-transparent text-white border-none hover:underline mt-2">VIEW MORE →</button>
+                    </div>
                 </div>
-                <div class="cell small-12 medium-4">
-                    <img src="@Model.ExploreImage3" alt="Explore Image 3">
+                <div class="relative">
+                    <img src="@Model.ExploreImage3" style="filter:brightness(0.75);" alt="Explore Image 3" class="w-full h-auto">
+                    <div class="absolute bottom-0 left-0 p-4 w-full">
+                        <div class="text-white">Your Text Here</div>
+                        <button class="bg-transparent text-white border-none hover:underline mt-2">VIEW MORE →</button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section>
-            <div class="bg-dark-blue feature-images grid-x grid-padding-x">
-                <div class="cell small-12 medium-3">
-                    <img src="@Model.FeatureImage1" alt="Feature Image 1">
+        <!-- Feature Section -->
+        <section class="py-12">
+            <div class="bg-dark-blue grid grid-cols-1 md:grid-cols-4 gap-4 p-8">
+                <div class="flex justify-center items-center">
+                    <img src="@Model.FeatureImage1" alt="Feature Image 1" class="h-auto">
                 </div>
-                <div class="cell small-12 medium-3">
-                    <img src="@Model.FeatureImage2" alt="Feature Image 2">
+                <div class="flex justify-center items-center">
+                    <img src="@Model.FeatureImage2" alt="Feature Image 2" class="h-auto">
                 </div>
-                <div class="cell small-12 medium-3">
-                    <img src="@Model.FeatureImage3" alt="Feature Image 3">
+                <div class="flex justify-center items-center">
+                    <img src="@Model.FeatureImage3" alt="Feature Image 3" class="h-auto">
                 </div>
-                <div class="cell small-12 medium-3">
-                    <img src="@Model.FeatureImage4" alt="Feature Image 4">
-                </div>
-            </div>
-            <div class="grid-x">
-                <div class="cell">
-                    <img src="@Model.DiscoverImage" alt="Discover Image">
+                <div class="flex justify-center items-center">
+                    <img src="@Model.FeatureImage4" alt="Feature Image 4" class="h-auto">
                 </div>
             </div>
-        </section>
+
+
+            <!-- Discover Section -->
+            <section class="relative">
+                <img src="@Model.DiscoverImage" style="filter:brightness(0.5);"alt="Discover Image" class="w-full h-[300px] md:h-[500px] object-cover">
+
+                <div class="absolute inset-0 flex items-center justify-center text-center text-white px-4">
+                    <div class="max-w-xl">
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">Discover more about IOTA</h2>
+                        <p class="text-sm sm:text-base md:text-lg mb-4">Find out who we are, why we do it, and why we love what we do.</p>
+                        <div class="flex flex-col sm:flex-row items-center sm:items-stretch justify-center gap-3">
+                            <button class="bg-teal-500 text-white py-2 px-4 rounded-md text-sm sm:text-base">WATCH THE VIDEO</button>
+                            <button class="bg-yellow-500 text-white py-2 px-4 rounded-md text-sm sm:text-base">ABOUT IOTA</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
     </header>
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/what-input@5.2.10/dist/what-input.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/foundation-sites/dist/js/foundation.min.js"></script>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <script>
-        // Initialize Foundation
-        $(document).foundation();
-
         // Initialize Slick carousel
         $(document).ready(function(){
             $('.slider').slick({

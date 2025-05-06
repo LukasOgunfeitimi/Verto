@@ -44,7 +44,6 @@ namespace Verto.Controllers {
             if (!string.IsNullOrWhiteSpace(model.Title)) existing.Title = model.Title;
             if (!string.IsNullOrWhiteSpace(model.Description)) existing.Description = model.Description;
 
-            // Slider text updates
             existing.SliderTitle1 = model.SliderTitle1;
             existing.SliderTitle2 = model.SliderTitle2;
             existing.SliderTitle3 = model.SliderTitle3;

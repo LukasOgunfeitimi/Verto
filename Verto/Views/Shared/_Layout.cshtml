@@ -7,49 +7,87 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Verto.styles.css" asp-append-version="true" />
-    <!-- Slick CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <!-- Slick Theme (Optional) -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <!-- jQuery (Required) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Slick JS -->
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Verto</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+        <nav class="bg-white shadow-md py-4">
+            <div class="container mx-auto flex justify-between items-center px-6">
+                <!-- Logo -->
+                <img src="~/images/logo.png" alt="Logo" class="h-10" />
+
+                <!-- Navbar Toggler for Mobile -->
+                <button id="nav-toggler" class="lg:hidden p-2 text-gray-800 border border-gray-300 rounded-md">
+                    ☰
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+
+                <div class="flex lg:flex-row space-x-8 lg:flex">
+                    <a class="text-gray-800 hover:text-yellow-500" asp-area="" asp-controller="Admin" asp-action="EditHomePage">Admin</a>
+                    <div class="text-gray-800 hover:text-yellow-500">Services</div>
+                    <div class="text-gray-800 hover:text-yellow-500">Sustainability</div>
+                    <div class="text-gray-800 hover:text-yellow-500">Our Work</div>
+                    <div class="text-gray-800 hover:text-yellow-500">Resources</div>
+                    <div class="text-gray-800 hover:text-yellow-500">About IOTA</div>
+                    <div class="text-gray-800 hover:text-yellow-500">Get in Touch</div>
+                    <img style="w-auto" src="~/images/search.png" alt="Search Icon" />
                 </div>
+
+
             </div>
         </nav>
     </header>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="lg:hidden hidden fixed top-0 left-0 bg-white shadow-lg z-50 p-4">
+        <ul>
+            <li><a href="#" class="block py-2 text-gray-800 hover:text-yellow-500">Home</a></li>
+            <li><a href="#" class="block py-2 text-gray-800 hover:text-yellow-500">Services</a></li>
+            <li><a href="#" class="block py-2 text-gray-800 hover:text-yellow-500">Sustainability</a></li>
+            <li><a href="#" class="block py-2 text-gray-800 hover:text-yellow-500">Our Work</a></li>
+            <li><a href="#" class="block py-2 text-gray-800 hover:text-yellow-500">Resources</a></li>
+            <li><a href="#" class="block py-2 text-gray-800 hover:text-yellow-500">About IOTA</a></li>
+            <li><a href="#" class="block py-2 text-gray-800 hover:text-yellow-500">Get in Touch</a></li>
+            <li><a href="#" class="block py-2 text-gray-800 hover:text-yellow-500">Search</a></li>
+        </ul>
+    </div>
+
+    <!-- JavaScript for Toggling Menu -->
+    <script>
+        const navToggler = document.getElementById('nav-toggler');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        navToggler.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+
+
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Verto - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="bg-[#333333] text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center">
+                <div class="text-sm">
+                    &copy; 2025 - Verto
+                </div>
+                <div class="text-sm">
+                    <a href="/" class="hover:text-teal-400">Home</a>
+                </div>
+            </div>
+            <div class="mt-4 text-center text-sm text-gray-400">
+                Designed by Lukas
+            </div>
         </div>
     </footer>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
